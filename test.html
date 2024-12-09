@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>时代少年团TNT</title>
+    <style>
+        body {
+            background-color: #fff5e5; /* 背景颜色 */
+            color: #595859; /* 全部字体颜色 */
+            font-family: Arial, sans-serif; /* 字体 */
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+        .category-container {
+            display: flex; /* 使用Flexbox布局 */
+            justify-content: space-between; /* 分类之间保持间距 */
+            margin-bottom: 20px;
+        }
+        .category {
+            background-color: #c8e3f6; /* 分类的底色 */
+            padding: 10px 20px;
+            cursor: pointer;
+            width: calc(33.333% - 10px); /* 设置分类宽度，减去间距 */
+            text-align: center; /* 文本居中 */
+            margin: 5px;
+            transition: background-color 0.3s ease; /* 平滑背景颜色变化 */
+        }
+        .category h2 {
+            color: #595859; /* 分类标题颜色 */
+            margin: 0;
+        }
+        h1 {
+            text-align: center; /* h1文本居中 */
+            margin: 0; /* 移除默认的外边距 */
+            padding: 20px 0; /* 添加上下内边距 */
+        }
+        .category:hover {
+            content: "🍿️"; /* 鼠标悬停时显示的内容 */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .content {
+            display: none;
+            margin-top: 10px;
+        }
+        .content p {
+            margin: 0;
+        }
+        mark {
+            background-color: #ffffe0; /* 淡黄色高亮 */
+            color: #595859; /* 高亮文字颜色 */
+        }
+        .swiper-container {
+            width: 100%;
+            height: 300px; /* 根据需要调整轮播图的高度 */
+            position: relative;
+            overflow: hidden;
+        }
+        .swiper-wrapper {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+        .swiper-slide {
+            width: 50%; /* 每个轮播项占据整个容器宽度 */
+            height: 100%;
+            flex-shrink: 0;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: background-color 0.3s ease; /* 平滑背景颜色变化 */
+        }
+        .swiper-slide:hover {
+            content: "🍿️"; /* 鼠标悬停时显示的内容 */
+            color: #fff; /* 文本颜色 */
+            background-color: rgba(0, 0, 0, 0.5); /* 背景颜色，确保文本可见 */
+        }
+    </style>
+    <style>
+        .video-container {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        .video-item {
+            width: calc(33.333% - 10px);
+            position: relative;
+            cursor: pointer;
+            overflow: hidden;
+        }
+        .video-item img {
+            width: 100%;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+        .video-item:hover img {
+            transform: scale(1.1);
+        }
+        .video-link {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 10;
+        }
+    </style>
+</head>
+<body>
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide" style="background-image: url('雪.jpg');"></div>
+            <div class="swiper-slide" style="background-image: url('雪地.jpg');"></div>
+            <div class="swiper-slide" style="background-image: url('冬日.jpg');"></div>
+            <div class="swiper-slide" style="background-image: url('烤火.jpg');"></div>
+            <div class="swiper-slide" style="background-image: url('蹲着.jpg');"></div>
+            <div class="swiper-slide" style="background-image: url('封面.jpg');"></div>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- 网站标题 -->
+        <h1><span class="icon">🍿️</span>欢迎上楼<span class="icon">🍿️</span></h1>
+
+
+        <!-- 分类容器 -->
+        <div class="category-container">
+            <!-- 分类：舞台 -->
+            <div class="category" onclick="toggleContent('stage-content')">
+                <h2>舞台<span class="icon">🪩</span></h2>
+            </div>
+            <!-- 分类：综艺 -->
+            <div class="category" onclick="toggleContent('variete-content')">
+                <h2>综艺<span class="icon">🤪</span></h2>
+            </div>
+            <!-- 分类：纪录片 -->
+            <div class="category" onclick="toggleContent('documentary-content')">
+                <h2>纪录片<span class="icon">🎞️</span></h2>
+            </div>
+        </div>
+
+        <!-- 舞台内容 -->
+        <div class="content" id="stage-content">
+            <h3>舞台表演精选</h3>
+            <p>以下是时代少年团TNT的舞台表演精选：</p>
+            <ul>
+                <li><strong>舞台1：</strong><em>表演名称</em> - <abbr title="2023年12月">12月</abbr>表演</li>
+                <li><strong>舞台2：</strong><em>表演名称</em> - <abbr title="2024年1月">1月</abbr>表演</li>
+            </ul>
+            <p>舞台表演中，时代少年团TNT展现了<mark>卓越的舞蹈技巧</mark>和<mark>动人的歌声</mark>。</p>
+        </div>
+
+        <!-- 综艺内容 -->
+        <div class="content" id="variete-content">
+            <h3>综艺节目集锦</h3>
+            <p>以下是时代少年团TNT参与的综艺节目集锦：</p>
+            <ol>
+                <li><strong>综艺1：</strong><em>节目名称</em> - 访谈节目</li>
+                <li><strong>综艺2：</strong><em>节目名称</em> - 游戏节目</li>
+            </ol>
+            <p>在综艺节目中，时代少年团TNT展现了他们的<mark>幽默感</mark>和<mark>亲和力</mark>。</p>
+        </div>
+
+        <!-- 纪录片内容 -->
+        <div class="content" id="documentary-content">
+            <h3>纪录片介绍</h3>
+            <p>以下是时代少年团TNT相关的纪录片介绍：</p>
+            <dl>
+                <dt>纪录片1</dt>
+                <dd>讲述了时代少年团TNT的<ruby>成长历程</ruby>。</dd>
+                <dt>纪录片2</dt>
+                <dd>记录了时代少年团TNT的<ruby>幕后故事</ruby>。</dd>
+            </dl>
+            <p>纪录片中，时代少年团TNT展现了他们的<mark>努力</mark>和<mark>坚持</mark>。</p>
+        </div>
+    </div>
+    <div class="video-container">
+        <!-- 视频1 -->
+        <div class="video-item">
+            <a href="https://www.bilibili.com/video/BV1b5zKYKEad/?share_source=copy_web&vd_source=5961051ef947e121104f5cf587482b0b" target="_blank" class="video-link"></a>
+            <img src="1.jpg" alt="视频1缩略图">
+            <p>【时代少年团】4K高清舞台 「走马」丨20241124 《一起走过的日子》五周年演唱会重庆站 多机位高清4K直拍focus </p>
+        </div>
+
+        <!-- 视频2 -->
+        <div class="video-item">
+            <a href="https://www.bilibili.com/video/BV1gyqcYpEqT/?share_source=copy_web&vd_source=5961051ef947e121104f5cf587482b0b" target="_blank" class="video-link"></a>
+            <img src="2.jpg" alt="视频2缩略图">
+            <p>【时代少年团】《重生之我在石坝楼当明星》完整版 </p>
+        </div>
+
+        <!-- 视频3 -->
+        <div class="video-item">
+            <a href="https://www.bilibili.com/video/BV1fYq5YTEup/?share_source=copy_web&vd_source=5961051ef947e121104f5cf587482b0b" target="_blank" class="video-link"></a>
+            <img src="3.jpg" alt="视频3缩略图">
+            <p>【时代少年团】“一起走过的日子”出道五周年演唱会11月23日场</p>
+
+        </div>
+    </div>
+
+    <script>
+        function toggleContent(contentId) {
+            var content = document.getElementById(contentId);
+            if (content.style.display === 'block') {
+                content.style.display = 'none';
+            } else {
+                content.style.display = 'block';
+                // Hide other contents
+                var otherContents = document.querySelectorAll('.content');
+                otherContents.forEach(function(otherContent) {
+                    if (otherContent.id !== contentId) {
+                        otherContent.style.display = 'none';
+                    }
+                });
+            }
+        }
+
+        // 简单的轮播图逻辑
+        let currentIndex = 0;
+        const slides = document.querySelectorAll('.swiper-slide');
+        const totalSlides = slides.length;
+
+        function moveSlide() {
+            currentIndex = (currentIndex + 1) % totalSlides;
+            const offset = -currentIndex * 100;
+            document.querySelector('.swiper-wrapper').style.transform = `translateX(${offset}%)`;
+        }
+
+        // 轮播图自动播放
+        setInterval(moveSlide, 2500); // 每3秒切换一次
+    </script>
+</body>
+</html>
